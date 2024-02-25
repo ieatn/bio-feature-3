@@ -62,8 +62,61 @@ export function Component() {
         { label: "C", text: "Ophidiophobia" },
         { label: "D", text: "Claustrophobia" }
       ]
+    },
+    // Questions about anxiety disorders
+    {
+      question: "What disorder is characterized by excessive worry about various aspects of life?",
+      correctOption: "A",
+      options: [
+        { label: "A", text: "Generalized Anxiety Disorder (GAD)" },
+        { label: "B", text: "Panic Disorder" },
+        { label: "C", text: "Social Anxiety Disorder (Social Phobia)" },
+        { label: "D", text: "Obsessive-Compulsive Disorder (OCD)" }
+      ]
+    },
+    {
+      question: "Which disorder involves recurring unexpected panic attacks?",
+      correctOption: "B",
+      options: [
+        { label: "A", text: "Generalized Anxiety Disorder (GAD)" },
+        { label: "B", text: "Panic Disorder" },
+        { label: "C", text: "Social Anxiety Disorder (Social Phobia)" },
+        { label: "D", text: "Obsessive-Compulsive Disorder (OCD)" }
+      ]
+    },
+    {
+      question: "What disorder involves intense fear and avoidance of social situations?",
+      correctOption: "C",
+      options: [
+        { label: "A", text: "Generalized Anxiety Disorder (GAD)" },
+        { label: "B", text: "Panic Disorder" },
+        { label: "C", text: "Social Anxiety Disorder (Social Phobia)" },
+        { label: "D", text: "Obsessive-Compulsive Disorder (OCD)" }
+      ]
+    },
+    {
+      question: "Which disorder involves intrusive, unwanted thoughts and repetitive behaviors?",
+      correctOption: "D",
+      options: [
+        { label: "A", text: "Generalized Anxiety Disorder (GAD)" },
+        { label: "B", text: "Panic Disorder" },
+        { label: "C", text: "Social Anxiety Disorder (Social Phobia)" },
+        { label: "D", text: "Obsessive-Compulsive Disorder (OCD)" }
+      ]
+    },
+    {
+      question: "What disorder can develop after exposure to a traumatic event?",
+      correctOption: "A",
+      options: [
+        { label: "A", text: "Post-Traumatic Stress Disorder (PTSD)" },
+        { label: "B", text: "Panic Disorder" },
+        { label: "C", text: "Social Anxiety Disorder (Social Phobia)" },
+        { label: "D", text: "Obsessive-Compulsive Disorder (OCD)" }
+      ]
     }
   ];
+
+
   
   
 
@@ -104,27 +157,29 @@ export function Component() {
           {currentQuestion < quizQuestions.length && (
             <div className="text-center">
               <p className="text-xl font-semibold mt-4">{quizQuestions[currentQuestion].question}</p>
-              <img
-                src={quizQuestions[currentQuestion].photo}
-                alt={`Photo for question ${currentQuestion + 1}`}
-                className="mt-4 mx-auto max-w-[400px] h-auto"
-              />
+              {quizQuestions[currentQuestion].photo && ( // Check if photo property exists
+                <img
+                  src={quizQuestions[currentQuestion].photo}
+                  alt={`Photo for question ${currentQuestion + 1}`}
+                  className="mt-4 mx-auto max-w-[400px] max-h-[300px] h-auto"
+                />
+              )}
             </div>
           )}
 
 
-          <div className="w-full max-w-sm space-y-4">
+
+          <div className="w-full max-w-sm mx-auto space-y-4">
             <div className="grid grid-cols-2 gap-4">
               {currentQuestion < quizQuestions.length &&
                 quizQuestions[currentQuestion].options.map((option, index) => (
                   <div
                     key={index}
                     className={`relative flex items-center p-4 rounded-lg border border-gray-200 bg-white shadow-sm cursor-pointer dark:border-gray-800 
-                    ${selectedOption === option.label && (selectedOption === quizQuestions[currentQuestion].correctOption ? 'bg-green-200' : 'bg-red-200')} 
+                    ${selectedOption === option.label && (selectedOption === quizQuestions[currentQuestion].correctOption ? 'bg-green-300' : 'bg-red-300')} 
                     hover:shadow transition-transform hover:scale-105 dark:border-gray-800`}
                     onClick={() => handleOptionClick(option.label)}
                   >
-                    
                     <span className="absolute inset-y-0 left-0 flex items-center ml-4">
                       <div />
                     </span>
@@ -135,6 +190,7 @@ export function Component() {
                 ))}
             </div>
           </div>
+
 
           {currentQuestion < quizQuestions.length && (
             <button onClick={handleNextQuestion} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Next Question</button>
