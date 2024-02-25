@@ -134,7 +134,7 @@ export function Component() {
 
   return (
     <div>
-      <div className="space-y-2 my-4">
+      <div className="">
         <h1 className="text-center text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">Phobia Quiz</h1>
         <p className="text-center text-gray-500 md:text-xl dark:text-gray-400">
           Test your knowledge of phobias! You have 15 seconds to answer each question.
@@ -142,7 +142,7 @@ export function Component() {
       </div>
 
       <div className="relative grid w-full h-screen min-h-screen gap-0 md:grid-cols-1">
-        <div className="flex flex-col items-center justify-center gap-4 p-4 text-center md:gap-0 md:grid md:items-start md:px-6 lg:gap-10">
+        <div className="flex flex-col items-center justify-center gap-4 p-4 text-center md:gap-0 md:grid md:items-start md:px-6">
           <div className="flex items-center justify-center w-full md:justify-start">
             <div className="flex items-center space-x-2">
               <ArrowRightIcon className="h-4 w-4" />
@@ -176,7 +176,7 @@ export function Component() {
                   <div
                     key={index}
                     className={`relative flex items-center p-4 rounded-lg border border-gray-200 bg-white shadow-sm cursor-pointer dark:border-gray-800 
-                    ${selectedOption === option.label && (selectedOption === quizQuestions[currentQuestion].correctOption ? 'bg-green-300' : 'bg-red-300')} 
+                    ${selectedOption === option.label && (selectedOption === quizQuestions[currentQuestion].correctOption ? 'bg-green-200' : 'bg-red-200')} 
                     hover:shadow transition-transform hover:scale-105 dark:border-gray-800`}
                     onClick={() => handleOptionClick(option.label)}
                   >
